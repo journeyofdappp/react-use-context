@@ -2,7 +2,7 @@ import { ThemeContext } from "../store/ThemeContext";
 import { useContext } from "react";
 
 export default function Header() {
-  const { theme, toogleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div
@@ -16,7 +16,7 @@ export default function Header() {
       </p>
       <button
         className="tracking-tight mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        onClick={toogleTheme}
+        onClick={toggleTheme}
       >
         Change Theme
       </button>
