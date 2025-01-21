@@ -1,11 +1,18 @@
+import { useState } from "react";
 import Header from "./components/Header";
-import { ThemeProvider } from "./store/ThemeContext.jsx";
+import { ThemeContext } from "./store/ThemeContext";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  function toogleTheme() {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  }
+
   return (
-    <ThemeProvider>
+    <ThemeContext.Provider value={{ theme, toogleTheme }}>
       <Header />
-    </ThemeProvider>
+    </ThemeContext.Provider>
   );
 }
 
