@@ -1,25 +1,56 @@
 import { ThemeContext } from "../store/ThemeContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { words, animationVariants } from "../utils/data";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  function getRandomWord() {
+    return Math.floor(Math.random() * words.futureDesignQuotes.length);
+  }
+
+  const [word, setWord] = useState(words.futureDesignQuotes[getRandomWord()]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWord(words.futureDesignQuotes[getRandomWord()]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div
       className={`${
         theme === "light" ? "bg-white text-black" : "bg-black text-white"
-      } flex flex-col justify-center items-center h-screen w-screen font-serif `}
+      }`}
     >
-      <h1 className="text-5xl tracking-tight">Hello World</h1>
-      <p className="tracking-tight">
-        {theme === "light" ? "Light Mode" : "Dark Mode"}
-      </p>
-      <button
-        className="tracking-tight mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        onClick={toggleTheme}
-      >
-        Change Theme
-      </button>
+      <div className={`font-manrope space-y-4 max-w-sm mx-auto py-20`}>
+        <h1 className="text-6xl tracking-tight ">
+          Transforming spaces with modern design.
+        </h1>
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={word}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={animationVariants}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-lg"
+          >
+            {word}
+          </motion.p>
+        </AnimatePresence>
+        <button
+          className={`${
+            theme === "light" ? "bg-black text-white" : "bg-white text-black"
+          } tracking-tight px-4 py-2 rounded-lg text-sm`}
+          onClick={toggleTheme}
+        >
+          {theme === "light" ? "Dark Mode" : "Light Mode"}
+        </button>
+      </div>
     </div>
   );
 }

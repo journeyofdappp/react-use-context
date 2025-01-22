@@ -12,13 +12,8 @@ export default function ThemeContextProvider({ children }) {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }
 
-  const contextValue = {
-    theme,
-    toggleTheme,
-  };
-
   return (
-    <ThemeContext.Provider value={contextValue}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
