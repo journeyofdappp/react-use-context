@@ -25,7 +25,7 @@ export default function Header() {
         theme === "light" ? "bg-white text-black" : "bg-black text-white"
       }`}
     >
-      <div className={`font-manrope space-y-4 max-w-sm mx-auto py-20`}>
+      <div className={`font-manrope space-y-4 max-w-xs mx-auto py-20`}>
         <h1 className="text-6xl tracking-tight ">
           Transforming spaces with modern design.
         </h1>
@@ -37,7 +37,7 @@ export default function Header() {
             exit="exit"
             variants={animationVariants}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-lg"
+            className="text-lg leading-tight block h-12"
           >
             {word}
           </motion.p>
