@@ -26,8 +26,9 @@ export default function Header() {
       }`}
     >
       <div className={`font-manrope space-y-4 max-w-xs mx-auto py-20`}>
-        <h1 className="text-6xl tracking-tight ">
-          Transforming spaces with modern design.
+        <h1 className="text-5xl tracking-tight ">
+          Transforming <span className="font-serif italic">spaces</span> with
+          modern design.
         </h1>
         <AnimatePresence mode="wait">
           <motion.p
